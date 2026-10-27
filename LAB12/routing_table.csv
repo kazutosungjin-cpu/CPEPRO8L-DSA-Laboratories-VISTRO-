@@ -1,0 +1,10 @@
+target,distance_m,path,edges
+Admin,2,Gate > Admin,1
+Annex,unreachable,-,-
+Cafeteria,8,Gate > Admin > Library > Cafeteria,3
+Chapel,12,Gate > ScienceLab > Chapel,2
+Dorm,15,Gate > ScienceLab > Chapel > Dorm,3
+Gate,0,Gate,0
+Gym,12,Gate > Admin > Library > Cafeteria > Gym,4
+Library,3,Gate > Admin > Library,2
+ScienceLab,3,Gate > ScienceLab,1

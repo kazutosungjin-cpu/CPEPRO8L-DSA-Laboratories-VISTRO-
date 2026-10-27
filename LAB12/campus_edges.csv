@@ -1,0 +1,13 @@
+u,v,weight_m
+Gate,Admin,2
+Gate,ScienceLab,3
+Gate,Chapel,20
+Admin,Library,1
+Admin,Cafeteria,7
+Library,Cafeteria,5
+ScienceLab,Cafeteria,5
+ScienceLab,Chapel,9
+Cafeteria,Gym,4
+Chapel,Dorm,3
+Gym,Dorm,6
+Annex,,

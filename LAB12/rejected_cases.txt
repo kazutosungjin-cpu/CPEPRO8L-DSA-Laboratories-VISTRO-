@@ -1,0 +1,3 @@
+dijkstra(neg, 'A') -> NegativeWeightError: graph has a negative edge weight; Dijkstra's algorithm is not valid
+Unchecked Dijkstra A->B = 4; true shortest (Bellman-Ford) = 2 (A>C>B = 5 + -3)
+bfs(g, 'Nope') -> KeyError: "unknown start vertex 'Nope'"

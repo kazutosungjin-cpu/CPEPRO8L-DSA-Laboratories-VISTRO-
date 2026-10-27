@@ -1,0 +1,8 @@
+test_all (__main__.TestSorts.test_all) ... ok
+test_random_fuzz (__main__.TestSorts.test_random_fuzz) ... ok
+test_stability_of_stable_sorts (__main__.TestSorts.test_stability_of_stable_sorts) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.087s
+
+OK

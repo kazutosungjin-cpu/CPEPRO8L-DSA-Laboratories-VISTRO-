@@ -1,0 +1,41 @@
+BFS from Gate: Gate -> Admin -> Chapel -> ScienceLab -> Cafeteria -> Library -> Dorm -> Gym
+DFS from Gate: Gate -> Admin -> Cafeteria -> Gym -> Dorm -> Chapel -> ScienceLab -> Library
+BFS from Dorm: Dorm -> Chapel -> Gym -> Gate -> ScienceLab -> Cafeteria -> Admin -> Library
+DFS from Dorm: Dorm -> Chapel -> Gate -> Admin -> Cafeteria -> Gym -> Library -> ScienceLab
+
+== BFS trace from Gate (program) ==
+select=(start)    queue=['Gate']  visited=['Gate']
+select=Gate       queue=['Admin', 'Chapel', 'ScienceLab']  visited=['Admin', 'Chapel', 'Gate', 'ScienceLab']
+select=Admin      queue=['Chapel', 'ScienceLab', 'Cafeteria', 'Library']  visited=['Admin', 'Cafeteria', 'Chapel', 'Gate', 'Library', 'ScienceLab']
+select=Chapel     queue=['ScienceLab', 'Cafeteria', 'Library', 'Dorm']  visited=['Admin', 'Cafeteria', 'Chapel', 'Dorm', 'Gate', 'Library', 'ScienceLab']
+select=ScienceLab queue=['Cafeteria', 'Library', 'Dorm']  visited=['Admin', 'Cafeteria', 'Chapel', 'Dorm', 'Gate', 'Library', 'ScienceLab']
+select=Cafeteria  queue=['Library', 'Dorm', 'Gym']  visited=['Admin', 'Cafeteria', 'Chapel', 'Dorm', 'Gate', 'Gym', 'Library', 'ScienceLab']
+select=Library    queue=['Dorm', 'Gym']  visited=['Admin', 'Cafeteria', 'Chapel', 'Dorm', 'Gate', 'Gym', 'Library', 'ScienceLab']
+select=Dorm       queue=['Gym']  visited=['Admin', 'Cafeteria', 'Chapel', 'Dorm', 'Gate', 'Gym', 'Library', 'ScienceLab']
+select=Gym        queue=[]  visited=['Admin', 'Cafeteria', 'Chapel', 'Dorm', 'Gate', 'Gym', 'Library', 'ScienceLab']
+
+== DFS (explicit stack) trace from Gate (program) ==
+pop=Gate       visit                    stack=['ScienceLab', 'Chapel', 'Admin']  order=['Gate']
+pop=Admin      visit                    stack=['ScienceLab', 'Chapel', 'Library', 'Cafeteria']  order=['Gate', 'Admin']
+pop=Cafeteria  visit                    stack=['ScienceLab', 'Chapel', 'Library', 'ScienceLab', 'Library', 'Gym']  order=['Gate', 'Admin', 'Cafeteria']
+pop=Gym        visit                    stack=['ScienceLab', 'Chapel', 'Library', 'ScienceLab', 'Library', 'Dorm']  order=['Gate', 'Admin', 'Cafeteria', 'Gym']
+pop=Dorm       visit                    stack=['ScienceLab', 'Chapel', 'Library', 'ScienceLab', 'Library', 'Chapel']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm']
+pop=Chapel     visit                    stack=['ScienceLab', 'Chapel', 'Library', 'ScienceLab', 'Library', 'ScienceLab']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel']
+pop=ScienceLab visit                    stack=['ScienceLab', 'Chapel', 'Library', 'ScienceLab', 'Library']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel', 'ScienceLab']
+pop=Library    visit                    stack=['ScienceLab', 'Chapel', 'Library', 'ScienceLab']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel', 'ScienceLab', 'Library']
+pop=ScienceLab skip (already visited)   stack=['ScienceLab', 'Chapel', 'Library']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel', 'ScienceLab', 'Library']
+pop=Library    skip (already visited)   stack=['ScienceLab', 'Chapel']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel', 'ScienceLab', 'Library']
+pop=Chapel     skip (already visited)   stack=['ScienceLab']  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel', 'ScienceLab', 'Library']
+pop=ScienceLab skip (already visited)   stack=[]  order=['Gate', 'Admin', 'Cafeteria', 'Gym', 'Dorm', 'Chapel', 'ScienceLab', 'Library']
+
+== Dijkstra heap pops from Gate (program) ==
+pop (0, Gate) settled; updates: ['Admin=2', 'Chapel=20', 'ScienceLab=3']
+pop (2, Admin) settled; updates: ['Cafeteria=9', 'Library=3']
+pop (3, Library) settled; updates: ['Cafeteria=8']
+pop (3, ScienceLab) settled; updates: ['Chapel=12']
+pop (8, Cafeteria) settled; updates: ['Gym=12']
+pop (9, Cafeteria) stale, skipped; updates: []
+pop (12, Chapel) settled; updates: ['Dorm=15']
+pop (12, Gym) settled; updates: []
+pop (15, Dorm) settled; updates: []
+pop (20, Chapel) stale, skipped; updates: []
